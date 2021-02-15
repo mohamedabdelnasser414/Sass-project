@@ -6,13 +6,13 @@
     align-items: center;
 }
 .navbar{
-    background:$light;
     height: 80px;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem calc((100vw - 1200px)/2);
     position: relative;
     z-index: 10;
+    background-color: $light;
     @extend %align-center;  
 
     &-logo {
@@ -39,8 +39,21 @@
         display: flex;
         text-align: center;
         margin-right: 24px;
+        list-style: none;
         @include tablet{
-            display: none;
+            position: absolute;
+            flex-direction: column;
+            top: 80px;
+            height: 0;
+            overflow: hidden;
+            width: 100%;
+            background-color: $light;
+            text-align: center;
+            z-index: -1;
+
+            & li{
+                padding-top: 2rem;
+            }
         }
         &-links {
             text-decoration: none;
@@ -49,7 +62,7 @@
 
             &:hover{
                 color: lime;
-                transition: all 0.3s ease;
+                transition: all 0.3s ease-in-out;
             }
         }
         #button{
@@ -64,4 +77,15 @@
             }
         }
     }
+}
+
+// Toggle Classes
+.show {
+    @include tablet{
+        height: 15rem;
+        transition: all 0.8s ease-in;
+    }    
+}
+.move-down{
+    margin-bottom: 15rem;
 }
